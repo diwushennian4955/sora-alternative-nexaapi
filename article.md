@@ -121,3 +121,115 @@ npm install nexaapi  # https://www.npmjs.com/package/nexaapi
 ```
 
 Your Sora replacement is one API call away.
+
+---
+
+## Detailed Model Comparison: Kling 3.0 vs Sora 2 vs Veo 3
+
+Choosing the right Sora replacement depends on your use case. Here's a detailed breakdown:
+
+### Kling 3.0 Pro — Best Overall Sora Replacement
+
+**Why it wins:** Kling 3.0 Pro delivers cinematic 4K quality with native audio generation — features Sora never had. At $0.0333/sec via NexaAPI, it's the most cost-effective option for high-volume production.
+
+Key features:
+- **Native audio generation** — Generate ambient sound, music, and dialogue automatically
+- **Multi-shot control** — Sequence multiple camera angles in a single generation
+- **4K resolution** — Higher quality than Sora's 1080p output
+- **Image-to-video** — Animate static images with precise motion control
+- **Extended duration** — Up to 10 seconds per generation (vs Sora's 5-second limit)
+
+Best for: Marketing videos, product demos, social media content, film pre-visualization.
+
+### Sora 2 — For OpenAI Ecosystem Users
+
+If your team is deeply invested in OpenAI tooling, Sora 2 is the natural upgrade path. It's available via NexaAPI at $0.07/sec — 2.9x cheaper than the direct OpenAI price.
+
+Sora 2 improvements over original Sora:
+- Better physics simulation and object consistency
+- Improved text rendering within videos
+- Longer generation windows (up to 15 seconds)
+- Better prompt adherence
+
+Best for: Teams already using GPT-4o, DALL-E, or other OpenAI models who want consistency.
+
+### Veo 3 — For Cinematic Quality
+
+Google's Veo 3 produces the highest-quality output of any video model available today. At $0.15/sec via NexaAPI (vs $0.40/sec direct), it's the premium option for brand campaigns and high-production content.
+
+Best for: Brand campaigns, film production, premium content where quality > cost.
+
+---
+
+## Frequently Asked Questions
+
+**Q: Will my existing Sora prompts work with Kling 3.0?**
+A: Yes, with minor adjustments. Kling 3.0 uses similar natural language prompting. Most Sora prompts work directly; you may want to add "cinematic 4K" or "native audio" to leverage Kling 3.0's unique features.
+
+**Q: Is NexaAPI's Kling 3.0 the same as the official Kling API?**
+A: Yes — NexaAPI uses the official Kuaishou Kling API under the hood and passes through the same model quality. The difference is pricing: NexaAPI negotiates bulk rates and passes the savings to developers.
+
+**Q: How long does video generation take?**
+A: Typically 30-120 seconds depending on duration and quality settings. NexaAPI provides async generation with webhook callbacks for production use.
+
+**Q: Can I use NexaAPI in production?**
+A: Yes. NexaAPI offers SLA guarantees, rate limit increases for enterprise customers, and dedicated support. Contact them at nexa-api.com for enterprise pricing.
+
+**Q: What if I need more than just video generation?**
+A: NexaAPI provides access to 56+ AI models — image generation (Flux, Imagen 4, DALL-E 3), text generation (GPT-4o, Claude 3.5), audio (ElevenLabs V3, Gemini TTS), and more. One API key for everything.
+
+---
+
+## Production-Ready Code: Async Video Generation
+
+For production use, you'll want async generation with status polling:
+
+```python
+# pip install nexaapi
+from nexaapi import NexaAPI
+import time
+
+client = NexaAPI(api_key='YOUR_API_KEY')  # https://nexa-api.com
+
+def generate_video_async(prompt: str, model: str = 'kling-3.0-pro') -> str:
+    """Generate video asynchronously and poll for completion."""
+    # Submit generation job
+    job = client.video.generate_async(
+        model=model,
+        prompt=prompt,
+        duration=5,
+        aspect_ratio='16:9'
+    )
+    
+    job_id = job.id
+    print(f'Job submitted: {job_id}')
+    
+    # Poll for completion
+    while True:
+        status = client.video.get_status(job_id)
+        
+        if status.state == 'completed':
+            print(f'Video ready: {status.video_url}')
+            return status.video_url
+        elif status.state == 'failed':
+            raise Exception(f'Generation failed: {status.error}')
+        else:
+            print(f'Status: {status.state} ({status.progress}%)...')
+            time.sleep(10)
+
+# Usage
+video_url = generate_video_async(
+    'A serene mountain lake at golden hour, cinematic 4K',
+    model='kling-3.0-pro'
+)
+```
+
+---
+
+## Summary
+
+Sora is gone — but your AI video pipeline doesn't have to suffer. NexaAPI gives you instant access to better models (Kling 3.0 Pro, Sora 2, Veo 3) at 3x lower cost, with a single API key and no credit card required.
+
+**[Get your free API key at nexa-api.com](https://nexa-api.com)** and migrate in 5 minutes.
+
+> Source: nexa-api.com | Retrieved: 2026-03-27
