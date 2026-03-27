@@ -1,12 +1,20 @@
-# 🎬 Sora Alternative — NexaAPI Video Generation
+# sora-alternative-nexaapi
 
-[![Free Tier Available](https://img.shields.io/badge/Free%20Tier-Available-green)](https://nexa-api.com)
-[![PyPI](https://img.shields.io/badge/pip-nexaapi-blue)](https://pypi.org/project/nexaapi/)
-[![npm](https://img.shields.io/badge/npm-nexaapi-red)](https://www.npmjs.com/package/nexaapi)
+> Sora Shutdown: NexaAPI as the Best Alternative for AI Video Generation
 
-**OpenAI Sora shut down on March 24, 2026.** This repo provides drop-in replacement code using [NexaAPI](https://nexa-api.com) — access Kling 3.0, Veo 3, Sora 2, and more at 3x lower cost.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/diwushennian4955/431f3bc6b808843cfb7e6908d0db230b/colab_notebook.ipynb)
 
-## Quick Start
+## 🔗 Published Content
+
+- 📝 **Blog**: [Sora Alternative — nexa-api.com](https://nexa-api.com/blog/sora-alternative-nexaapi-2026)
+- 🤗 **HuggingFace Space**: [Sora Alternative Demo](https://huggingface.co/spaces/nickyni/ai-video-generator)
+- 📰 **Dev.to**: [Sora Shutdown: NexaAPI is the Best Alternative](https://dev.to/diwushennian4955/sora-shutdown-nexaapi-is-the-best-alternative-for-ai-video-generation-4eep)
+- 📓 **Google Colab**: [Open in Colab](https://colab.research.google.com/gist/diwushennian4955/431f3bc6b808843cfb7e6908d0db230b/colab_notebook.ipynb)
+- 💻 **GitHub**: [sora-alternative-nexaapi](https://github.com/diwushennian4955/sora-alternative-nexaapi)
+
+## 🚀 Quick Start
+
+Sora shut down on March 24, 2026. Migrate to NexaAPI in 3 lines of code:
 
 ```bash
 pip install nexaapi
@@ -14,32 +22,20 @@ pip install nexaapi
 
 ```python
 from nexaapi import NexaAPI
-client = NexaAPI(api_key='YOUR_FREE_API_KEY')  # Get free key at nexa-api.com
+
+client = NexaAPI(api_key='YOUR_API_KEY')  # Free at nexa-api.com
 
 response = client.video.generate(
-    model='kling-3.0-pro',
-    prompt='Cinematic mountain landscape at sunset',
-    duration=5
+    model='kling-v3-pro',  # Best Sora alternative
+    prompt='A cinematic sunset over a futuristic city',
+    duration=5,
+    aspect_ratio='16:9'
 )
-print(response.video_url)
 ```
 
-## Files
+## 🔗 Links
 
-- `migrate_from_sora.py` — Python migration guide
-- `migrate_from_sora.js` — JavaScript migration guide
-
-## Pricing Comparison
-
-| Model | NexaAPI | Direct | Savings |
-|-------|---------|--------|---------|
-| Kling 3.0 Pro | $0.0333/sec | ~$0.10/sec | 3x cheaper |
-| Sora 2 | $0.07/sec | $0.20/sec | 2.9x cheaper |
-| Veo 3 | $0.15/sec | $0.40/sec | 2.7x cheaper |
-
-## Links
-
-- 🌐 [nexa-api.com](https://nexa-api.com)
-- 🚀 [RapidAPI](https://rapidapi.com/user/nexaquency)
-- 🐍 [PyPI](https://pypi.org/project/nexaapi/)
-- 📦 [npm](https://www.npmjs.com/package/nexaapi)
+- 🔑 [Get Free API Key — nexa-api.com](https://nexa-api.com)
+- ⚡ [RapidAPI](https://rapidapi.com/user/nexaquency)
+- 🐍 [pip install nexaapi](https://pypi.org/project/nexaapi/)
+- 📦 [npm install nexaapi](https://www.npmjs.com/package/nexaapi)
